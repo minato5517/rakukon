@@ -603,16 +603,13 @@
                     <button class="venue-area-button bg-pink-200 text-pink-700 hover:bg-pink-300 px-2 py-1.5 rounded-md text-xs shadow-sm" data-area="kyushu">九州・沖縄</button>
                 </div>
 
-                <div id="venue-carousel-container" class="carousel-container mb-2 bg-white/10 backdrop-blur-sm rounded-lg p-3 shadow-lg max-w-md mx-auto">
+                <div id="venue-carousel-container" class="carousel-container mb-6 bg-white/10 backdrop-blur-sm rounded-lg p-3 shadow-lg max-w-md mx-auto">
                     <div id="venue-carousel-track" class="carousel-track">
                         </div>
                     <button class="carousel-button prev" id="venue-prev" aria-label="前の会場">&#10094;</button>
                     <button class="carousel-button next" id="venue-next" aria-label="次の会場">&#10095;</button>
                 </div>
-                <div class="carousel-dots mb-4" id="venue-carousel-dots"></div>
-                <div id="venue-image-grid" class="grid grid-cols-3 gap-2 mb-3 max-w-xs mx-auto">
-                    </div>
-                <p class="text-xs text-gray-200">※上記は<span id="current-venue-area-name">関東</span>エリアの会場の一部です。カルーセルの左右ボタンで他の会場もご覧いただけます。</p>
+                <div class="carousel-dots mb-8" id="venue-carousel-dots"></div>
                  <a href="#form-section" class="mt-6 inline-block bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-semibold py-2 px-6 rounded-lg shadow-md transition-colors text-base">
                     会場について詳しく相談する
                 </a>
@@ -1011,7 +1008,6 @@ const venueCarouselTrack = document.getElementById('venue-carousel-track');
 const venuePrevButton = document.getElementById('venue-prev');
 const venueNextButton = document.getElementById('venue-next');
 const venueDotsContainer = document.getElementById('venue-carousel-dots');
-const venueImageGrid = document.getElementById('venue-image-grid');
 const currentVenueAreaNameSpan = document.getElementById('current-venue-area-name');
 const toggleComparisonButton = document.getElementById('toggle-comparison-items');
 const stickyCTA = document.getElementById('sticky-cta');
@@ -1369,23 +1365,6 @@ function createVenueSlide(venue) {
     `;
 }
 
-function updateVenueImageGrid(area) {
-    const venuesInArea = venueData[area] || [];
-    if (venueImageGrid) {
-        venueImageGrid.innerHTML = '';
-        const maxImages = 3;
-        for (let i = 0; i < Math.min(venuesInArea.length, maxImages); i++) {
-            const venue = venuesInArea[i];
-            const imgElement = document.createElement('img');
-            imgElement.src = venue.img.replace('380x240', '120x80');
-            imgElement.alt = `${venue.name} のサムネイル画像`;
-            imgElement.className = 'w-full h-16 md:h-20 object-cover rounded-md shadow';
-            imgElement.onerror = function() { this.onerror=null; this.src='https://placehold.co/120x80/FF0000/FFFFFF?text=エラー'; };
-            venueImageGrid.appendChild(imgElement);
-        }
-    }
-}
-
 function updateVenueCarousel(area) {
     currentVenueArea = area;
     if (currentVenueAreaNameSpan) {
@@ -1403,7 +1382,6 @@ function updateVenueCarousel(area) {
         if (venueDotsContainer) venueDotsContainer.innerHTML = '';
         if (venuePrevButton) venuePrevButton.style.display = 'none';
         if (venueNextButton) venueNextButton.style.display = 'none';
-        if (venueImageGrid) venueImageGrid.innerHTML = '';
         return;
     }
 
@@ -1412,7 +1390,6 @@ function updateVenueCarousel(area) {
         if (venueDotsContainer) venueDotsContainer.innerHTML = '';
         if (venuePrevButton) venuePrevButton.style.display = 'none';
         if (venueNextButton) venueNextButton.style.display = 'none';
-        updateVenueImageGrid(area);
         return;
     }
     
@@ -1449,7 +1426,6 @@ function updateVenueCarousel(area) {
         }
     }
     currentVenueSlideIndices[area] = slideIndex;
-    updateVenueImageGrid(area);
 }
 
 function checkFooterVisibility() {
