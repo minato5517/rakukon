@@ -7,12 +7,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* 基本的なスタイル */
         body {
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden; /* スマホ表示で意図しない横スクロールを防ぐ */
+            overflow-x: hidden;
         }
-        /* アコーディオンとタブ、カルーセルのスタイル */
         .accordion-content {
             max-height: 0;
             overflow: hidden;
@@ -82,7 +80,7 @@
             transition: background-color 0.6s ease;
         }
         .carousel-dot.active {
-            background-color: #f472b6; /* pink-500 */
+            background-color: #f472b6;
         }
         .comparison-symbol {
             font-size: 1.8rem;
@@ -202,7 +200,7 @@
             transition: transform 0.3s ease-in-out;
         }
         .sticky-cta-container .sticky-cta-button-wrapper {
-            max-width: 24rem; /* 約384px */
+            max-width: 24rem;
             margin-left: auto;
             margin-right: auto;
         }
@@ -240,6 +238,27 @@
         .comparison-item.visible-item {
             display: block;
         }
+        .comparison-separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 0;
+        }
+        .comparison-separator::before,
+        .comparison-separator::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background-color: #e5e7eb;
+            margin: 0 0.5rem;
+        }
+        .comparison-separator-icon {
+            color: #f472b6;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0 0.5rem;
+        }
+
     </style>
 </head>
 <body class="bg-gray-100 text-base">
@@ -249,7 +268,7 @@
             <div class="container mx-auto px-4 py-3 flex justify-between items-center">
                 <div class="text-xl font-bold text-pink-500">[ロゴ: 楽婚]</div>
                 <nav class="hidden space-x-4">
-                    </nav>
+                </nav>
                 <div>
                     <button id="mobile-menu-button" class="text-gray-600 focus:outline-none" aria-label="メニューを開閉する">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
@@ -269,37 +288,44 @@
         <section class="relative bg-gradient-to-r from-pink-100 via-purple-50 to-blue-100 text-center py-12 md:py-16 flex flex-col justify-center items-center min-h-[calc(100vh-57px)] md:min-h-0">
             <img src="https://placehold.co/800x600/E9D5FF/A78BFA?text=憧れの結婚式イメージ" alt="結婚式のイメージ写真" class="absolute inset-0 w-full h-full object-cover opacity-20" onerror="this.onerror=null;this.src='https://placehold.co/800x600/E9D5FF/A78BFA?text=画像読込エラー';">
             <div class="relative z-10 container mx-auto px-4">
-                <h1 class="text-2xl font-semibold mb-2 text-gray-700">
-                    憧れが全部詰まった<br class="sm:hidden">コミコミ新プランが登場！
-                </h1>
-                <p class="mb-1">
-                    <span class="text-pink-500 text-5xl font-bold">150</span><span class="text-pink-500 text-3xl font-bold">万円</span><span class="text-xl font-medium text-gray-700">で叶える</span>
-                </p>
-                <p class="text-3xl font-bold text-pink-600 mb-4">
-                    フルパッケージウェディング
-                </p>
-                <p class="text-sm mb-6 text-gray-600 leading-relaxed max-w-lg mx-auto">
-                    追加料金の心配なし！ランクアップなしでも大満足。<br>
-                    ドレスも写真もおもてなしも賢く叶えて、<br>
-                    「こんなはずじゃなかった…」はもう卒業！
-                </p>
-                <div class="grid grid-cols-3 gap-0 max-w-md mx-auto bg-white/80 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden py-3 mt-6">
-                    <div class="achievement-item px-1 py-2 flex flex-col items-center justify-center">
-                        <p class="text-xs text-gray-600 mb-0.5">衣装取り扱い数</p>
-                        <p class="text-xl font-bold text-pink-500">8,000<span class="text-xs ml-0.5">着</span></p>
-                    </div>
-                    <div class="achievement-item px-1 py-2 flex flex-col items-center justify-center border-l border-r border-pink-200">
-                        <p class="text-xs text-gray-600 mb-0.5">年間プロデュース</p>
-                        <p class="text-xl font-bold text-pink-500">12,000<span class="text-xs ml-0.5">組</span></p>
-                    </div>
-                    <div class="achievement-item px-1 py-2 flex flex-col items-center justify-center">
-                        <p class="text-xs text-gray-600 mb-0.5">取り扱い式場数</p>
-                        <p class="text-xl font-bold text-pink-500">270<span class="text-xs ml-0.5">式場</span></p>
-                    </div>
+
+                <div class="mb-1 md:mb-2">
+                    <p class="text-2xl md:text-3xl font-semibold text-gray-700">憧れ全部入り！</p>
+                    <p class="text-xl md:text-2xl text-gray-600 mb-40 md:mb-56 lg:mb-72 xl:mb-80">楽婚にコミコミ新プランが登場！</p>
+
+                    <p class="mt-2">
+                        <span class="text-pink-500 text-5xl md:text-6xl font-bold">150</span><span class="text-pink-500 text-3xl md:text-4xl font-bold">万円</span><span class="text-xl md:text-2xl font-medium text-gray-700">で叶える</span>
+                    </p>
+                    <p class="text-3xl md:text-4xl font-bold text-pink-600 mt-1">
+                        フルパッケージウェディング
+                    </p>
                 </div>
-                 <a href="#form-section" class="mt-8 inline-block bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md transition-colors text-lg">
-                    まずは無料相談する
-                </a>
+
+                <div>
+                    <p class="text-sm mb-6 text-gray-600 leading-relaxed max-w-lg mx-auto">
+                        追加料金の心配なし！ランクアップなしでも大満足。<br>
+                        「こんなはずじゃなかった…」はもう卒業！
+                    </p>
+                    
+                    <div class="grid grid-cols-3 gap-0 max-w-md mx-auto bg-white/80 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden py-3 mt-6">
+                        <div class="achievement-item px-1 py-2 flex flex-col items-center justify-center">
+                            <p class="text-xs text-gray-600 mb-0.5">衣装取り扱い数</p>
+                            <p class="text-xl font-bold text-pink-500">8,000<span class="text-xs ml-0.5">着</span></p>
+                        </div>
+                        <div class="achievement-item px-1 py-2 flex flex-col items-center justify-center border-l border-r border-pink-200">
+                            <p class="text-xs text-gray-600 mb-0.5">年間プロデュース</p>
+                            <p class="text-xl font-bold text-pink-500">12,000<span class="text-xs ml-0.5">組</span></p>
+                        </div>
+                        <div class="achievement-item px-1 py-2 flex flex-col items-center justify-center">
+                            <p class="text-xs text-gray-600 mb-0.5">取り扱い式場数</p>
+                            <p class="text-xl font-bold text-pink-500">270<span class="text-xs ml-0.5">式場</span></p>
+                        </div>
+                    </div>
+
+                    <a href="#form-section" class="mt-8 inline-block bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md transition-colors text-lg">
+                        まずは無料相談する
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -324,11 +350,37 @@
             </div>
         </section>
 
-        <section id="plan-presentation" class="pt-8 pb-4 bg-pink-50">
+        <section id="plan-presentation" class="pt-8 pb-10 bg-pink-50">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-xl font-bold mb-2 text-pink-700">＼そのお悩み、楽婚の新フルパッケージプランならすべて解決！／</h2>
                 <p class="text-2xl font-bold mb-1 text-pink-500">「コミコミ150万円プラン」(仮)</p>
-                <p class="text-sm mb-4 text-gray-700">～追加料金の心配なし！すべて揃ったフルパッケージ～</p>
+                <p class="text-sm mb-6 text-gray-700">～追加料金の心配なし！すべて揃ったフルパッケージ～</p>
+
+                <div class="max-w-2xl mx-auto mt-8 mb-0">
+                    <div class="text-center mb-4">
+                        <h3 class="text-lg font-semibold text-gray-800">比べてみてください！賢い選択でこんなにお得に。</h3>
+                    </div>
+                    <div class="flex flex-col sm:flex-row justify-center items-stretch gap-4">
+                        <div class="flex-1 bg-white p-4 rounded-lg shadow-lg border-2 border-pink-400">
+                            <h4 class="text-pink-600 font-bold text-lg mb-2 text-center">楽婚のプラン</h4>
+                            <p class="text-3xl font-bold text-pink-500 text-center mb-2">150<span class="text-xl">万円～</span></p>
+                            <p class="text-xs text-gray-600 text-center leading-tight">（ドレス・写真・料理など<br>主要アイテムが全て込み！）</p>
+                        </div>
+                        <div class="comparison-separator sm:hidden">
+                            <span class="comparison-separator-icon">比較</span>
+                        </div>
+                        <div class="hidden sm:flex items-center justify-center px-2">
+                            <div class="w-px h-24 bg-pink-300"></div>
+                        </div>
+                        <div class="flex-1 bg-gray-100 p-4 rounded-lg shadow">
+                            <h4 class="text-gray-700 font-bold text-lg mb-2 text-center">一般的な結婚式</h4>
+                            <p class="text-3xl font-bold text-gray-600 text-center mb-2">XXX<span class="text-xl">万円</span><span class="text-xs align-top">※</span></p>
+                            <p class="text-xs text-gray-600 text-center leading-tight">（初期見積もりから<br>追加費用が多くなりがち…）</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-3 text-center">※一般的な結婚式の費用相場です。（出典：〇〇調べ）</p>
+                </div>
+
             </div>
         </section>
 
@@ -358,7 +410,7 @@
                             </div>
                         </div>
                     </div>
-                     <div class="bg-white p-3 rounded-lg shadow comparison-item visible-item">
+                    <div class="bg-white p-3 rounded-lg shadow comparison-item visible-item">
                         <h4 class="text-sm font-semibold text-gray-600 mb-3 text-center border-b pb-2">最終支払い目安</h4>
                         <div class="grid grid-cols-3 gap-0 text-center items-start">
                             <div class="px-1">
@@ -536,8 +588,12 @@
 
         <section id="venues" class="py-10 bg-pink-50 section-overlay-bg" style="background-image: url('https://placehold.co/800x700/fbcfe8/831843?text=会場背景(薄ピンク)');">
             <div class="section-overlay-content container mx-auto px-4 text-center text-white">
-                <h2 class="text-2xl font-bold mb-4 text-white">お二人の理想を叶える<br class="sm:hidden">多彩な結婚式場</h2>
-                <p class="text-sm mb-6 text-gray-100">全国270以上の人気会場から選べる！</p>
+                <h2 class="text-2xl font-bold mb-2 text-white">
+                    全国<strong class="text-3xl text-yellow-300">270</strong>ヵ所以上の人気会場から選べる！
+                </h2>
+                <p class="text-xl mb-6 text-gray-100">
+                    理想を叶える多彩な結婚式場
+                </p>
                 <div class="mb-6 grid grid-cols-3 gap-2 max-w-md mx-auto">
                     <button class="venue-area-button active bg-pink-400 text-white px-2 py-1.5 rounded-md text-xs shadow-sm" data-area="kanto">関東</button>
                     <button class="venue-area-button bg-pink-200 text-pink-700 hover:bg-pink-300 px-2 py-1.5 rounded-md text-xs shadow-sm" data-area="tokai">東海</button>
@@ -810,7 +866,7 @@
                             <span class="text-pink-500 text-lg transform transition-transform duration-300 "><span class="icon-plus">+</span><span class="icon-minus">-</span></span>
                         </button>
                         <div class="accordion-content salon-detail-content px-4 py-3">
-                            <img src="https://placehold.co/380x200/FBCFE8/EC4899?text=浜松町サロン" alt="浜松町グランドサロン" class="w-full h-40 object-cover rounded-md mb-3" onerror="this.onerror=null;this.src='https://placehold.co/380x200/FF0000/FFFFFF?text=画像読込エラー';">
+                            <img src="https://placehold.co/380x200/FBCFE8/EC4899?text=浜松町サロン" alt="浜松町グランドサロン" class="w-full h-40 object-cover rounded-md mb-3" onerror="this.onerror=null;this.src='https://placehold.co/380x200/FF0000/FFFFFF?text=画像エラー';">
                             <p class="text-xs mb-1"><strong>住所:</strong> 東京都港区浜松町...</p>
                             <p class="text-xs mb-1"><strong>アクセス:</strong> JR浜松町駅 北口 徒歩X分</p>
                             <p class="text-xs mb-3"><strong>電話番号:</strong> 03-XXXX-XXXX</p>
@@ -905,9 +961,7 @@
                 <p>&copy; 2024 楽婚. All Rights Reserved.</p>
             </div>
         </footer>
-    </div>
-
-    <div id="sticky-cta" class="sticky-cta-container">
+    </div> <div id="sticky-cta" class="sticky-cta-container">
         <div class="sticky-cta-button-wrapper">
             <a href="#form-section" class="bg-yellow-400 hover:bg-yellow-500 text-gray-800 px-6 py-3 rounded-lg text-base font-bold shadow-xl transition-transform transform hover:scale-105 block w-full text-center">
                 今すぐ無料相談を予約する
@@ -916,7 +970,6 @@
     </div>
 
 <script>
-// グローバルスコープに近い変数宣言
 let venueData = {
   "kanto": [
     { "name": "ホテル椿山荘東京", "location": "文京区・江戸川橋", "img": "https://placehold.co/380x240/FBCFE8/EC4899?text=関東+会場1" },
@@ -1042,7 +1095,7 @@ function setupEventListeners() {
                     } else {
                         item.style.maxHeight = null;
                         setTimeout(() => {
-                             if (!this.classList.contains('active')) { 
+                            if (!this.classList.contains('active')) { 
                                 item.classList.add('hidden-item');
                                 item.classList.remove('visible-item');
                                 item.style.display = 'none';
@@ -1094,7 +1147,7 @@ function setupEventListeners() {
     if (venuePrevButton && venueNextButton) {
         venuePrevButton.addEventListener('click', () => {
             const venuesInArea = venueData[currentVenueArea] || [];
-            if (venuesInArea.length <= 1) return; 
+            if (venuesInArea.length <= 1) return;
             let newIndex = (currentVenueSlideIndices[currentVenueArea] - 1 + venuesInArea.length) % venuesInArea.length;
             currentVenueSlideIndices[currentVenueArea] = newIndex;
             updateVenueCarousel(currentVenueArea);
@@ -1176,6 +1229,7 @@ function setupEventListeners() {
 
     window.addEventListener('scroll', checkFooterVisibility);
     window.addEventListener('resize', checkFooterVisibility);
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const hrefAttribute = this.getAttribute('href');
@@ -1192,7 +1246,7 @@ function setupEventListeners() {
                     const headerOffset = header ? header.offsetHeight : 0;
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-        
+            
                     window.scrollTo({
                         top: offsetPosition,
                         behavior: "smooth"
@@ -1304,6 +1358,7 @@ function initializeSalonMoreButton() {
     }
 }
 
+
 function createVenueSlide(venue) {
     return `
         <div class="carousel-slide venue-slide area-${currentVenueArea} p-2">
@@ -1317,12 +1372,12 @@ function createVenueSlide(venue) {
 function updateVenueImageGrid(area) {
     const venuesInArea = venueData[area] || [];
     if (venueImageGrid) {
-        venueImageGrid.innerHTML = ''; 
-        const maxImages = 3; 
+        venueImageGrid.innerHTML = '';
+        const maxImages = 3;
         for (let i = 0; i < Math.min(venuesInArea.length, maxImages); i++) {
             const venue = venuesInArea[i];
             const imgElement = document.createElement('img');
-            imgElement.src = venue.img.replace('380x240', '120x80'); 
+            imgElement.src = venue.img.replace('380x240', '120x80');
             imgElement.alt = `${venue.name} のサムネイル画像`;
             imgElement.className = 'w-full h-16 md:h-20 object-cover rounded-md shadow';
             imgElement.onerror = function() { this.onerror=null; this.src='https://placehold.co/120x80/FF0000/FFFFFF?text=エラー'; };
@@ -1332,8 +1387,8 @@ function updateVenueImageGrid(area) {
 }
 
 function updateVenueCarousel(area) {
-    currentVenueArea = area; 
-    if (currentVenueAreaNameSpan) { 
+    currentVenueArea = area;
+    if (currentVenueAreaNameSpan) {
         const selectedButton = document.querySelector(`.venue-area-button[data-area="${area}"]`);
         currentVenueAreaNameSpan.textContent = selectedButton ? selectedButton.textContent : '';
     }
@@ -1357,7 +1412,7 @@ function updateVenueCarousel(area) {
         if (venueDotsContainer) venueDotsContainer.innerHTML = '';
         if (venuePrevButton) venuePrevButton.style.display = 'none';
         if (venueNextButton) venueNextButton.style.display = 'none';
-        updateVenueImageGrid(area); 
+        updateVenueImageGrid(area);
         return;
     }
     
@@ -1368,7 +1423,7 @@ function updateVenueCarousel(area) {
     const newSlidesInTrack = venueCarouselTrack.querySelectorAll('.carousel-slide');
 
     newSlidesInTrack.forEach((slide, index) => {
-        slide.style.display = index === slideIndex ? 'block' : 'none'; 
+        slide.style.display = index === slideIndex ? 'block' : 'none';
         if (index === slideIndex) {
             slide.classList.add('active');
         } else {
@@ -1377,8 +1432,8 @@ function updateVenueCarousel(area) {
     });
 
     if (venueDotsContainer) {
-        venueDotsContainer.innerHTML = ''; 
-        if (venuesInArea.length > 1) { 
+        venueDotsContainer.innerHTML = '';
+        if (venuesInArea.length > 1) {
             venuesInArea.forEach((_, index) => {
                 const dot = document.createElement('span');
                 dot.classList.add('carousel-dot');
@@ -1387,14 +1442,14 @@ function updateVenueCarousel(area) {
                 }
                 dot.addEventListener('click', () => {
                     currentVenueSlideIndices[area] = index;
-                    updateVenueCarousel(area); 
+                    updateVenueCarousel(area);
                 });
                 venueDotsContainer.appendChild(dot);
             });
         }
     }
-    currentVenueSlideIndices[area] = slideIndex; 
-    updateVenueImageGrid(area); 
+    currentVenueSlideIndices[area] = slideIndex;
+    updateVenueImageGrid(area);
 }
 
 function checkFooterVisibility() {
